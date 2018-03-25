@@ -31,7 +31,7 @@ function createButtons() {
 function displayGifs() {
     console.log('You clicked a button!');
     let topic = $(this).attr("data-name");
-    let queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topic + '&api_key=7nyQTw7YiI7ppj7UYC7izsawmgyVHhae';
+    let queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topic + '&limit=10&api_key=7nyQTw7YiI7ppj7UYC7izsawmgyVHhae';
 
     $.ajax({
         url: queryURL,
@@ -51,15 +51,19 @@ function displayGifs() {
             let p = $("<p>").text("Rating: " + rating);
 
             // Creating an image tag
-            let personImage = $("<img>");
+            let newGif = $("<img>");
+            newGif.addClass('pointer js-gif')
 
             // Giving the image tag an src attribute of a proprty pulled off the
             // result item
-            personImage.attr("src", results[i].images.fixed_height.url);
+            newGif.attr("src", results[i].images.fixed_height_still.url);
+            newGif.attr("data-still", results[i].images.fixed_height_still.url);
+            newGif.attr("data-animate", results[i].images.fixed_height.url);
+            newGif.attr("data-state", 'still');
 
-            // Appending the paragraph and personImage we created to the "gifDiv" div we created
+            // Appending the paragraph and newGif we created to the "gifDiv" div we created
             gifDiv.append(p);
-            gifDiv.append(personImage);
+            gifDiv.append(newGif);
 
             // Prepending the gifDiv to the '.js-gifs-view' div in the HTML
             $('.js-gifs-view').prepend(gifDiv);
@@ -72,8 +76,29 @@ createButtons();
 
 ////////////////////////////////////////////////// EVENTS //////////////////////////////////////////////////
 
-// $('.js-button').on("click", function(event) {
-//     event.preventDefault();
+  $(document).on("click", ".js-button", displayGifs);
+
+  $(document).on("click", '.js-gif' , function() {
+    // The attr jQuery method allows us to get or set the value of any attribute on our HTML element:
+    var state = $(this).attr("data-state");
+    // Console log the state of the gif:
+    console.log('This is the state: ' + state);
+    console.log('Src attr is: ' + $(this).attr('src'));
+    // If the clicked image's state is still...
+    if (state === "still") {
+      // ...update its src attribute to what its data-animate value is.
+      $(this).attr("src", $(this).attr("data-animate"));
+      // Then, set the image's data-state to animate
+      $(this).attr("data-state", "animate");
+      // Else set src to the data-still value
+    } else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+  });
+
+    // $('.js-button').on("click", function(event) {
+    //     event.preventDefault();
 
     // This line grabs the input from the textbox
     // let movie = $("#movie-input").val().trim();
@@ -83,7 +108,5 @@ createButtons();
     // console.log(movies);
 
     // Calling renderButtons which handles the processing of our movie array
-//     renderButtons();
-//   });
-
-  $(document).on("click", ".js-button", displayGifs);
+    //     renderButtons();
+    //   });
