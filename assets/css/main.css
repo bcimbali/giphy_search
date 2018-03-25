@@ -1,0 +1,21 @@
+
+.bold {
+    font-weight: bolder;
+}
+
+.button {
+    padding: 1%;
+}
+
+.button:hover {
+    background-color: cornflowerblue;
+    color: red;
+}
+
+.but-mar {
+    margin: 0.5%;
+}
+
+.pointer {
+    cursor: pointer;
+}
