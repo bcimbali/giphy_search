@@ -97,6 +97,21 @@ createButtons();
     }
   });
 
+
+  $("#add-topic").on("click", function(event) {
+    event.preventDefault();
+
+    // This line grabs the input from the textbox
+    let topic = $("#topic-input").val().trim();
+
+    // Adding the topic from the textbox to our array
+    topics.push(topic);
+    console.log(topics);
+
+    // Calling createButtons which handles the processing of our topics array
+    createButtons();
+  });
+
     // $('.js-button').on("click", function(event) {
     //     event.preventDefault();
 
