@@ -56,6 +56,10 @@
     min-width: 100%;
 }
 
+.norm-font {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .pointer {
     cursor: pointer;
 }
