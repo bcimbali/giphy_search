@@ -3,6 +3,10 @@
     font-weight: bolder;
 }
 
+.border {
+    border: 1px solid black;
+}
+
 .button {
     padding: 1%;
 }
@@ -16,6 +20,14 @@
     margin: 0.5%;
 }
 
+.d-f {
+    display: flex;
+}
+
 .pointer {
     cursor: pointer;
+}
+
+.row-wrap {
+    flex-flow: row wrap;
 }

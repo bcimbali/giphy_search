@@ -1,7 +1,7 @@
 
 ////////////////////////////////////////////// VARIABLES //////////////////////////////////////////////
 // Create an array of topics
-let topics = ['penguin', 'buckethead', 'foxes', 'antarctica', 'detroitlions', 'herbiehancock', 'techno', 'clear'
+let topics = ['penguin', 'buckethead', 'foxes', 'antarctica', 'detroit lions', 'herbie hancock', 'techno', 'clear'
 ,'michigan', 'shred', 'transit', 'winter', 'spring', 'summer', 'autumn' , 'crystals', 'bootsy', 'flint'];
 
 
@@ -30,6 +30,7 @@ function createButtons() {
 
 function displayGifs() {
     console.log('You clicked a button!');
+    $('.js-gifs-view').empty();
     let topic = $(this).attr("data-name");
     let queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topic + '&limit=10&api_key=7nyQTw7YiI7ppj7UYC7izsawmgyVHhae';
 
