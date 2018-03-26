@@ -7,6 +7,10 @@ let topics = ['penguin', 'buckethead', 'foxes', 'antarctica', 'detroit lions', '
 
 ////////////////////////////////////////////// FUNCTIONS //////////////////////////////////////////////
 
+function clearPreviousGifs() {
+    $('.js-gifs-view').empty();
+}
+
 function createButtons() {
     // Deleting any topic buttons prior to adding new buttons
     // (this is necessary otherwise we will have repeat buttons)
@@ -30,7 +34,7 @@ function createButtons() {
 
 function displayGifs() {
     console.log('You clicked a button!');
-    $('.js-gifs-view').empty();
+    clearPreviousGifs();
     let topic = $(this).attr("data-name");
     let queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topic + '&limit=10&api_key=7nyQTw7YiI7ppj7UYC7izsawmgyVHhae';
 
@@ -44,16 +48,18 @@ function displayGifs() {
          // Looping over every result item
         for (i = 0; i < results.length; i++) {
             // Creating a div with the class "item"
-            let gifDiv = $("<div class='item'>");
+            let gifDiv = $("<div class='img-mar item m-w'>");
             // Storing the result item's rating
             let rating = results[i].rating;
 
             // Creating a paragraph tag with the result item's rating
             let p = $("<p>").text("Rating: " + rating);
 
+            p.addClass('bold mar-bottom');
+
             // Creating an image tag
             let newGif = $("<img>");
-            newGif.addClass('pointer js-gif')
+            newGif.addClass('pointer js-gif w-100')
 
             // Giving the image tag an src attribute of a proprty pulled off the
             // result item
