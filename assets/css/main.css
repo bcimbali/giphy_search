@@ -16,8 +16,7 @@
 }
 
 .button:hover {
-    background-color: cornflowerblue;
-    color: red;
+    color: cyan;
 }
 
 .but-mar {
@@ -26,6 +25,10 @@
 
 .d-f {
     display: flex;
+}
+
+.fun-color {
+    background: linear-gradient(to right, #1FB58F, yellow);
 }
 
 .img-mar {
@@ -74,6 +77,10 @@
 
 .w-100 {
     width: 100%;
+}
+
+.white {
+    color: white;
 }
 
 

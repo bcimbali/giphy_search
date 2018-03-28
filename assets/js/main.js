@@ -21,8 +21,16 @@ function createButtons() {
         // Then dynamicaly generating buttons for each topic in the array.
         // This code $("<button>") will create start&end button tags(<button></button>)
         let newButton = $("<button>");
+
+        let colors = ['#1FB58F', '#EAB126', '#F24C4E', '#1B7B34'];
+
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+        let randomColor2 = colors[Math.floor(Math.random() * colors.length)];
+
+        newButton.css({background: "-webkit-gradient(linear, left top, left bottom, from(" + randomColor2 +  "), to(" + randomColor + "))"});
         // Adding classes to each button:
-        newButton.addClass("bold button but-mar js-button pointer");
+        newButton.addClass("bold button but-mar js-button pointer white");
         // Adding a data-attribute with a value of the topic at index i:
         newButton.attr("data-name", topics[i]);
         // Providing the button's text with a value of the topic at index i:
